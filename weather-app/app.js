@@ -1,14 +1,20 @@
 const request= require('request')
+const utils = require('./utils/geocode.js') 
+//without yargs, we can use process.argv for cmd line args.
+address = process.argv[2]
+console.log(process.argv)
 
-const url =  'http://api.weatherstack.com/current?access_key=e6393c7747adc7f7d513563a3d45d6e1&query=New York'
-
-request({url: url}, (error, response) => {
-
-    if (error) {
-        console.log('Unable to connect to location services!')
-        } else {
-            data = JSON.parse(response.body )
-            console.log( data.current.temperature )
+utils.geocode(address , (error, {temperature, observation_time}) => {
+    if (error){
+        return console.log('error!')
+    }
+    //console.log(error)
+    console.log(address + ' ' + temperature + ' '+ observation_time)
+    utils.geocode('America', (error, data) =>{
+        if (error){
+            return console.log('error!')
         }
-
+        //console.log(error)
+        console.log('america'+data)
+    })
 })
