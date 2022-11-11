@@ -5,13 +5,26 @@
 // 2. Use setTimeout to simulate a 2 second delay
 // 3. After 2 seconds are up, call the callback function with the sum
 // 4. Test your work!
-const add = (a,b, callback)=> {
+// 
+
+
+
+//promises
+
+const doWorkPromise = (callback) => {
     setTimeout( () => {
-        callback(a+b)
+        callback( 'undefined', 'succes!!');
     }, 2000)
-     
 }
 
-add(1, 4, (sum) => {
-    console.log(sum) // Should print: 5
+doWorkPromise( (error, data) => {
+    if(error){
+        return console.log("erro!"+error)
+    }
+    console.log('success'+data)
 })
+
+
+// add(1, 4, (sum) => {
+//     console.log(sum) // Should print: 5
+// })
