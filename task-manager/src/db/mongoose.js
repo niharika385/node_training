@@ -5,34 +5,18 @@ mongoose.connect('mongodb://127.0.0.1:27017/task-manager-api',{
 })
 
 
-const task = mongoose.model('task', {
-    description:{
-        type: String,
-        required: true
-    },
-    completed:{
-        type:Number,
-        default: false,
-        validate(value){
-            if(value<0){
-                throw new Error('task  must be positive')
-            }
-        }
-    }
 
-})
-
-const task1 = new task({
-    description: 'task2',
+// const task1 = new task({
+//     description: 'task2',
     
-})
+// })
 
 
-task1.save(). then( () => {
-    console.log(task)
-}).catch( (error) => {
-    console.log(error)
-})
+// task1.save(). then( () => {
+//     console.log(task)
+// }).catch( (error) => {
+//     console.log(error)
+// })
 
 // const me = new User({
 //     name:'niharika',
